@@ -115,6 +115,10 @@ export const GameSection = (props: GameSectionProps) => {
     }
   }
 
+  function _borderTop(index: number) {
+    if (index === 3 || index === 6) return "2.5px solid black"
+  };
+
   return (
     <section className="game">
       <table className="game__board">
@@ -122,7 +126,7 @@ export const GameSection = (props: GameSectionProps) => {
           {
             rows.map((row) => {
               return (
-                <tr className="game__row" key={row}>
+                <tr className={`game__row_${row}`} key={row} style={{ borderTop: `${_borderTop(row)}` }}>
                   {
                     rows.map((column) => {
                       const indexOfArray = row * 9 + column;
